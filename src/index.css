@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+  --bg: #090c1a;
+  --bg-layer-1: radial-gradient(1200px 700px at 8% 0%, rgba(99, 102, 241, 0.18), transparent 65%);
+  --bg-layer-2: radial-gradient(1000px 560px at 96% 14%, rgba(56, 189, 248, 0.14), transparent 62%);
+  --bg-layer-3: linear-gradient(140deg, #070a18 0%, #0b1022 45%, #101733 100%);
+  --body-ink: #e2e8f0;
+  --panel: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --brand: #4f46e5;
+  --accent: #4f46e5;
+  --line: #e2e8f0;
+  --saas-layer-1: radial-gradient(1100px 580px at 6% -8%, rgba(99, 102, 241, 0.28), transparent 60%);
+  --saas-layer-2: radial-gradient(980px 520px at 96% 8%, rgba(125, 211, 252, 0.22), transparent 62%);
+  --saas-layer-3: radial-gradient(980px 560px at 18% 102%, rgba(196, 181, 253, 0.22), transparent 66%);
+  --saas-layer-4: linear-gradient(160deg, #070a18 0%, #0b1022 46%, #111736 100%);
+  --saas-before-1: radial-gradient(520px 320px at 8% 4%, rgba(255, 255, 255, 0.62), transparent 70%);
+  --saas-before-2: radial-gradient(520px 320px at 92% 14%, rgba(255, 255, 255, 0.45), transparent 72%);
+  --saas-before-3: radial-gradient(780px 280px at 50% 100%, rgba(129, 140, 248, 0.08), transparent 78%);
+  --grid-color: rgba(15, 23, 42, 0.7);
+}
+
+html[data-theme="light"] {
+  --bg: #f8fafc;
+  --bg-layer-1: radial-gradient(1200px 700px at 8% 0%, rgba(99, 102, 241, 0.12), transparent 65%);
+  --bg-layer-2: radial-gradient(1000px 560px at 96% 14%, rgba(56, 189, 248, 0.1), transparent 62%);
+  --bg-layer-3: linear-gradient(140deg, #eef2ff 0%, #f8fafc 45%, #f1f5f9 100%);
+  --body-ink: #0f172a;
+  --saas-layer-1: radial-gradient(1100px 580px at 6% -8%, rgba(99, 102, 241, 0.16), transparent 60%);
+  --saas-layer-2: radial-gradient(980px 520px at 96% 8%, rgba(125, 211, 252, 0.12), transparent 62%);
+  --saas-layer-3: radial-gradient(980px 560px at 18% 102%, rgba(196, 181, 253, 0.12), transparent 66%);
+  --saas-layer-4: linear-gradient(160deg, #eef2ff 0%, #f8fafc 46%, #e2e8f0 100%);
+  --saas-before-1: radial-gradient(520px 320px at 8% 4%, rgba(255, 255, 255, 0.7), transparent 70%);
+  --saas-before-2: radial-gradient(520px 320px at 92% 14%, rgba(255, 255, 255, 0.58), transparent 72%);
+  --saas-before-3: radial-gradient(780px 280px at 50% 100%, rgba(129, 140, 248, 0.06), transparent 78%);
+  --grid-color: rgba(15, 23, 42, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg-layer-1), var(--bg-layer-2), var(--bg-layer-3);
+  background-size: 140% 140%;
+  animation: appGradientFlow 18s ease-in-out infinite;
+  color: var(--body-ink);
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-tight;
+  }
+
+  p,
+  li,
+  label,
+  input,
+  button,
+  select,
+  textarea,
+  a {
+    @apply text-[0.95rem];
+  }
+
+  h1 {
+    @apply text-4xl font-bold md:text-5xl;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+
+  h4 {
+    @apply text-lg font-medium;
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .panel {
+    @apply rounded-xl border border-slate-200 bg-white/95 shadow-sm backdrop-blur-md;
+  }
+
+  .glass-card {
+    @apply rounded-xl border border-slate-200 bg-white/95 shadow-sm backdrop-blur-sm;
+    box-shadow:
+      0 14px 34px rgba(17, 24, 39, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .soft-gradient-panel {
+    background:
+      radial-gradient(560px 260px at 10% 0%, rgba(99, 102, 241, 0.12), transparent 62%),
+      radial-gradient(420px 220px at 90% 20%, rgba(56, 189, 248, 0.08), transparent 70%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96));
+  }
+
+  .hover-lift {
+    @apply transition duration-300 hover:-translate-y-0.5 hover:shadow-md;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold text-slate-900;
+  }
+
+  .section-subtitle {
+    @apply mt-1 text-sm text-slate-500;
+  }
+
+  .stat-card {
+    @apply rounded-xl border border-white/60 bg-white/75 p-5 shadow-sm backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:shadow-md;
+    box-shadow:
+      0 10px 28px rgba(99, 102, 241, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+
+  .heading {
+    @apply text-xl font-semibold text-slate-900;
+  }
+
+  .label-muted {
+    @apply text-xs text-slate-500;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-700;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-400 hover:bg-slate-50;
+  }
+
+  .input-base {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-300/40;
+  }
+
+  .saas-bg {
+    position: relative;
+    isolation: isolate;
+    background: var(--saas-layer-1), var(--saas-layer-2), var(--saas-layer-3), var(--saas-layer-4);
+  }
+
+  .saas-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: var(--saas-before-1), var(--saas-before-2), var(--saas-before-3);
+  }
+
+  .saas-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image:
+      linear-gradient(0deg, var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 120px 120px;
+  }
+
+  .saas-blob {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(42px);
+    opacity: 0.32;
+    pointer-events: none;
+    animation: auroraFloat 14s ease-in-out infinite;
+  }
+
+  .saas-blob-one {
+    top: 8%;
+    left: -8%;
+    height: 280px;
+    width: 360px;
+    background: radial-gradient(circle at 40% 40%, rgba(79, 70, 229, 0.65), rgba(79, 70, 229, 0));
+  }
+
+  .saas-blob-two {
+    right: -10%;
+    top: 28%;
+    height: 320px;
+    width: 420px;
+    background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.52), rgba(56, 189, 248, 0));
+    animation-delay: -4s;
+  }
+
+  .saas-blob-three {
+    bottom: -10%;
+    left: 20%;
+    height: 260px;
+    width: 520px;
+    background: radial-gradient(circle at 50% 40%, rgba(165, 180, 252, 0.5), rgba(165, 180, 252, 0));
+    animation-delay: -7s;
+  }
+
+  .glass-elevated {
+    @apply rounded-xl border border-slate-200 bg-white/95 shadow-sm backdrop-blur-sm;
+    box-shadow:
+      0 8px 20px rgba(2, 6, 23, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .dashboard-enter {
+    animation: fadeInUp 0.55s ease both;
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatSlower {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes shakeX {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes auroraFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -22px, 0) scale(1.06);
+  }
+}
+
+@keyframes appGradientFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5.5s ease-in-out infinite;
+}
+
+.animate-float-slower {
+  animation: floatSlower 7.5s ease-in-out infinite;
+}
+
+.animate-shake-x {
+  animation: shakeX 0.35s ease;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.45s ease;
+}
