@@ -11,8 +11,12 @@ const STORAGE_KEY = 'learnflow-theme-mode';
 
 function getInitialMode() {
   if (typeof window === 'undefined') return 'dark';
-  const saved = window.localStorage.getItem(STORAGE_KEY);
-  if (saved === 'light' || saved === 'dark') return saved;
+  try {
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    if (saved === 'light' || saved === 'dark') return saved;
+  } catch {
+    return 'dark';
+  }
   return 'dark';
 }
 
@@ -20,8 +24,14 @@ export function ThemeModeProvider({ children }) {
   const [mode, setMode] = useState(getInitialMode);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', mode);
-    window.localStorage.setItem(STORAGE_KEY, mode);
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', mode);
+    }
+    try {
+      window.localStorage.setItem(STORAGE_KEY, mode);
+    } catch {
+      // Ignore storage errors (private mode / blocked storage).
+    }
   }, [mode]);
 
   const value = useMemo(
