@@ -21,6 +21,9 @@
   --saas-before-2: radial-gradient(520px 320px at 92% 14%, rgba(255, 255, 255, 0.45), transparent 72%);
   --saas-before-3: radial-gradient(780px 280px at 50% 100%, rgba(129, 140, 248, 0.08), transparent 78%);
   --grid-color: rgba(15, 23, 42, 0.7);
+  --landing-bg: linear-gradient(145deg, #070a18 0%, #0b1022 50%, #101a37 100%);
+  --auth-bg: linear-gradient(145deg, #070a18 0%, #0b1022 50%, #101a37 100%);
+  --notfound-bg: linear-gradient(145deg, #070a18 0%, #0b1022 50%, #101a37 100%);
 }
 
 html[data-theme="light"] {
@@ -37,6 +40,9 @@ html[data-theme="light"] {
   --saas-before-2: radial-gradient(520px 320px at 92% 14%, rgba(255, 255, 255, 0.58), transparent 72%);
   --saas-before-3: radial-gradient(780px 280px at 50% 100%, rgba(129, 140, 248, 0.06), transparent 78%);
   --grid-color: rgba(15, 23, 42, 0.12);
+  --landing-bg: linear-gradient(145deg, #eef2ff 0%, #f8fafc 55%, #f5f3ff 100%);
+  --auth-bg: linear-gradient(145deg, #e0e7ff 0%, #f8fafc 52%, #ede9fe 100%);
+  --notfound-bg: linear-gradient(145deg, #e0e7ff 0%, #f8fafc 52%, #ede9fe 100%);
 }
 
 * {
@@ -104,6 +110,21 @@ body {
 @layer components {
   .app-shell {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .landing-bg {
+    background: var(--landing-bg);
+    transition: background 0.3s ease;
+  }
+
+  .auth-bg {
+    background: var(--auth-bg);
+    transition: background 0.3s ease;
+  }
+
+  .notfound-bg {
+    background: var(--notfound-bg);
+    transition: background 0.3s ease;
   }
 
   .panel {

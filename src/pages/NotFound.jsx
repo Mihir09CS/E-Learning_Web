@@ -4,7 +4,7 @@ export default function NotFound() {
   const navigate = useNavigate();
 
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-10">
+    <main className="notfound-bg min-h-screen px-4 py-10">
       <div className="mx-auto max-w-4xl">
         <section className="rounded-xl border border-slate-200 bg-white p-8 text-center shadow-sm sm:p-12">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-indigo-500">Page Not Found</p>

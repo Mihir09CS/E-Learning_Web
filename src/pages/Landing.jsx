@@ -41,7 +41,7 @@ export default function Landing() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <main className="landing-bg min-h-screen">
       <div className="app-shell py-6">
         <header className="panel p-4 sm:p-5">
           <div className="flex flex-wrap items-center justify-between gap-4">

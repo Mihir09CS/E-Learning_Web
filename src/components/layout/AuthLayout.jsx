@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useThemeMode } from '../../context/ThemeModeContext.jsx';
 import fallbackImage from '../../assets/hero-learning.svg';
 
 export default function AuthLayout({
@@ -8,6 +9,7 @@ export default function AuthLayout({
   panelTag = 'Smart Learning Space',
   panelText = 'Fast. Structured. Contest-Ready.',
 }) {
+  const { mode, toggleTheme } = useThemeMode();
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [imageSrc, setImageSrc] = useState('/auth-ai.jpg');
 
@@ -19,9 +21,16 @@ export default function AuthLayout({
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-indigo-100 via-slate-50 to-purple-100">
+    <main className="auth-bg relative min-h-screen overflow-hidden">
       <div className="pointer-events-none absolute -top-24 left-10 h-72 w-72 rounded-full bg-indigo-300/35 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-purple-300/30 blur-3xl" />
+      <button
+        type="button"
+        onClick={toggleTheme}
+        className="absolute right-6 top-6 z-20 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50"
+      >
+        {mode === 'dark' ? 'Light' : 'Dark'}
+      </button>
 
       <div className="relative mx-auto grid min-h-screen w-full max-w-7xl items-stretch px-4 py-6 md:grid-cols-2 md:px-8">
         <section
